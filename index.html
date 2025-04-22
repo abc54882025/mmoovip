@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="Description"
+		content="Máy đánh bạc Điện Tử🎰，Bắn Cá，Game Bài，Sòng bạc trực tuyến, nền tảng chơi Game và giải trí đáng tin cậy nhất." />
+	<link rel="icon" href="images/index/favicon.ico">
+	<title>MoMo Trò chơi sòng bạc trực tuyến hay nhất, thương hiệu lâu đời mà bạn có thể tin tưởng.</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+		crossorigin="anonymous">
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.min.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+	<style>
+		@keyframes scaleEffect {
+			0% {
+				transform: scale(1.1);
+			}
+
+			50% {
+				transform: scale(1.2);
+			}
+
+			100% {
+				transform: scale(1.1);
+			}
+		}
+
+		.img-download-app img {
+			animation: scaleEffect 2s infinite ease-in-out;
+		}
+
+		.img-download-app {
+			z-index: 99999;
+		}
+
+		.link-download-app {
+			padding: 0px;
+			position: relative;
+			overflow: hidden;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<div id="header">
+			<div class="hBox clearfix">
+				<div class="logo">
+					<a href="index.html">
+						<img src="images/index/300x150%20mmoo.png" alt="">
+					</a>
+				</div>
+				<div class="hIm02">
+					<a :href="kefuUrl" target="_blank">
+						<img src="images/index/DỊCH VỤ HỖ TRỢ.png" alt="">
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="sjbdmap">
+			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img src="/images/banner/a1.jpg" style="width: 100%">
+					</div>
+					<div class="carousel-item">
+						<img src="/images/banner/a2.jpg" style="width: 100%">
+					</div>
+					<div class="carousel-item">
+						<img src="/images/banner/a3.jpg" style="width: 100%">
+					</div>
+					<div class="carousel-item">
+						<img src="/images/banner/a4.jpg" style="width: 100%">
+					</div>
+					
+				</div>
+			</div>
+		</div>
+				<div id="container">
+			<div id="main">
+				<div class="wrap clearfix">
+					<div id="conts">
+						<h2><img src="images/index/Link truy cập tốc độ cao.png" alt=""></h2>
+						<ul class="linkUl">
+							<li class="li02" v-for="(item,index) in urls" :key="index">
+								<span class="txt">{{item.second}}</span>
+								<img src="images/index/index-icon.png" alt="">
+								<span class="web">{{item.title}}</span>
+								<a :href="item.url" target="_blank">Truy cập</a>
+							</li>
+						</ul>
+						<div class="refresh pcbdmap">
+							<a @click="refresh">TẢI LẠI</a>
+						</div>
+					</div>
+					<div id="sideBar">
+						<h2><img src="images/index/TẢI APP NGAY.png" alt=""></h2>
+						<div class="inner clearfix">
+							<div class="img-download-app">
+								<img src="images/index/748x828.png" alt="">
+							</div>
+
+							<div class="link-download-app">
+								<div class="content">
+									<a @click="down" target="_blank">
+	<!--									<h3>TRUY CẬP LINK TẢI APP TỐC ĐỘ CAO</h3>-->
+										<img src="images/index/TẢI APP CHO DI ĐỘNG 2.png" style="width: 100%">
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="container2">
+			<div id="main">
+				<div class="wrap clearfix">
+					<div id="conts">
+						<h2><img src="images/index/Link truy cập tốc độ cao.png" alt=""></h2>
+						<ul class="linkUl">
+							<li class="li02" v-for="(item,index) in moburls" :key="index">
+								<span class="txt">{{item.second}}</span>
+								<img src="images/index/index-icon.png" alt="">
+								<span class="web">{{item.title}}</span>
+								<a :href="item.url" target="_blank">Truy cập</a>
+							</li>
+						</ul>
+						<div class="socials">
+							
+							<a href="https://telega.one/+UAKCO5tJksw2ZTJl" target="_blank"><img
+									src="images/index/TELEGRAM.png" alt="telegram"></a>
+							<a href="http://fc.tt88aa.club/Account/Login" target="_blank"><img
+									src="images/index/ĐẠI LÝ HỢP TÁC.png" alt="dndl"></a>
+						</div>
+						<div class="refresh pcbdmap">
+							<a @click="refresh">TẢI LẠI</a>
+						</div>
+						<div class="link-download-app">
+							<div class="content">
+								<a href="https://tt8hhhhhgggg-88oook.xyz/DownloadApp/" target="_blank">
+									<!--<h3>TRUY CẬP LINK TẢI APP TỐC ĐỘ CAO</h3>-->
+									<img src="images/index/TẢI APP CHO DI ĐỘNG 2.png" style="width: 100%">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="fBox">
+				<div class="fImg">
+				</div>
+				<p>Copyright © Momo Reserved</p>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				timeHanlde: null,
+				tim: 0,
+				urls: [
+					{
+						url: "https://tt88-1.pages.dev/",
+						title: "Link truy cập 1",
+						second: this.waitingText,
+						time: 0
+					},
+					{
+						url: "https://tt88-2.pages.dev/",
+						title: "Link truy cập 2",
+						second: this.waitingText,
+						time: 0
+					},
+					{
+						url: "https://tt88-3.pages.dev/",
+						title: "Link truy cập 3",
+						second: this.waitingText,
+						time: 0
+					},
+					{
+						url: "https://tt88-4.pages.dev/",
+						title: "Link truy cập 4",
+						second: this.waitingText,
+						time: 0
+					},
+
+					{
+						url: "https://tt88-5.pages.dev/",
+						title: "Link truy cập 5",
+						second: this.waitingText,
+						time: 0
+					},
+
+
+				],
+				moburls: [
+					{
+						url: "https://tt88-1.pages.dev/",
+						title: "Link truy cập 1",
+						second: this.waitingText,
+						time: 0
+					},
+					{
+						url: "https://tt88-2.pages.dev/",
+						title: "Link truy cập 2",
+						second: this.waitingText,
+						time: 0
+					},
+					{
+						url: "https://tt88-3.pages.dev/",
+						title: "Link truy cập 3",
+						second: this.waitingText,
+						time: 0
+					},
+					{
+						url: "https://tt88-4.pages.dev/",
+						title: "Link truy cập 4",
+						second: this.waitingText,
+						time: 0
+					},
+
+					{
+						url: "https://tt88-5.pages.dev/",
+						title: "Link truy cập 5",
+						second: this.waitingText,
+						time: 0
+					},
+
+				],
+
+				waitingText: "đang kiểm duyệt ",
+				connectTimeout: "hết hạn",
+				connectFail: '9ms',
+				name: 'tt88.com',
+				kefuUrl: "https://core2.vchat.vn/service/chat?code=18761&jwt=d23465eaf0d43530dc73401c19eead29&_=1736226281448",
+				apkAppUrl: 'https://tt8hhhhhgggg-88oook.xyz/DownloadApp/',
+				pcUrl: 'https://tt8hhhhhgggg-88oook.xyz/DownloadApp/',
+
+			},
+			mounted() {
+				this.timeHanlde = setInterval(() => {
+					this.tim++
+				}, 100)
+				for (let i = 0; i < this.urls.length; i++) {
+					this.send(this.urls[i].url, i)
+				}
+				for (let j = 0; j < this.moburls.length; j++) {
+					this.send(this.moburls[j].url, j);
+				}
+
+				setTimeout(() => {
+					this.sortList(this.urls);
+					this.sortList(this.moburls);
+				}, 1000)
+			},
+			methods: {
+				refresh() {
+					this.tim = 0
+					clearInterval(this.timeHanlde)
+					this.timeHanlde = setInterval(() => {
+						this.tim++
+					}, 100)
+					for (let i = 0; i < this.urls.length; i++) {
+						this.send(this.urls[i].url, i)
+					}
+					for (let j = 0; j < this.moburls.length; j++) {
+						this.send(this.moburls[j].url, j)
+					}
+					setTimeout(() => {
+						this.sortList(this.urls);
+						this.sortList(this.moburls);
+					}, 1000)
+
+				},
+				sortOrder(filed, type = 'asc') {
+					return (a, b) => {
+						if (type === 'asc') return a[filed] > b[filed] ? 1 : -1;
+						return a[filed] > b[filed] ? -1 : 1;
+					}
+				},
+				sortList() {
+					this.urls.sort(this.sortOrder('time', 'asc'))
+					this.moburls.sort(this.sortOrder('time', 'asc'))
+				},
+				send(url, index) {
+					const _this = this
+					$.ajax({
+						type: 'get',
+						url: url,
+						dataType: 'jsonp',
+						timeout: 1000,
+						complete: function (res) {
+							console.log(res);
+							if (res.status == 200) {
+								if (_this.tim > 5000) {
+									_this.urls[index].second = _this.connectTimeout;
+									_this.moburls[index].second = _this.connectTimeout;
+								}
+								else {
+									_this.urls[index].second = _this.tim + 'ms';
+									_this.moburls[index].second = _this.tim + 'ms';
+								}
+								_this.urls[index].time = _this.tim;
+								_this.moburls[index].time = _this.tim;
+							}
+							else {
+								_this.urls[index].second = _this.connectFail;
+								_this.urls[index].time = 999999;
+								_this.moburls[index].second = _this.connectFail;
+								_this.moburls[index].time = 999999;
+							}
+						},
+					})
+				},
+				down() {
+					if (this.browserDetection() == 'PC') {
+						window.location.href = this.pcUrl;
+					} else {
+						if (this.browserDetection() == 'iphone' || this.browserDetection() == 'ipad') {
+							window.location.href = this.ios_step_1
+							setTimeout(() => {
+								window.location.href = this.ios_step_2
+							}, 2000)
+						} else {
+							window.location.href = this.apkAppUrl;
+						}
+					}
+
+				},
+
+				browserDetection() {
+					var userAgent = window.navigator.userAgent.toLowerCase();
+					var browser = null;
+					if (userAgent.match(/ipad/i)) {
+						browser = 'ipad';
+					} else if (userAgent.match(/iphone os/i)) {
+						browser = 'iphone';
+					} else if (userAgent.match(/midp/i)) {
+						browser = 'midp'
+					} else if (userAgent.match(/rv:1.2.3.4/i)) {
+						browser = 'rv:1.2.3.4';
+					} else if (userAgent.match(/ucweb/i)) {
+						browser = 'ucweb';
+					} else if (userAgent.match(/android/i)) {
+						browser = 'android';
+					} else if (userAgent.match(/windows ce/i)) {
+						browser = 'windowsCe';
+					} else if (userAgent.match(/windows mobile/i)) {
+						browser = 'windowsMobile';
+					} else {
+						browser = 'PC'
+					}
+					return browser;
+				}
+			}
+		})
+		document.addEventListener("DOMContentLoaded", function () {
+			const txtElements = document.querySelectorAll(".txt");
+
+			function updateRandomPing() {
+				txtElements.forEach(element => {
+					const randomPing = Math.floor(Math.random() * 10 + 1) + "ms";
+					element.textContent = randomPing;
+				});
+			}
+
+			updateRandomPing();
+
+			setTimeout(() => {
+				setInterval(updateRandomPing, 1000);
+			}, 1000);
+		});
+	</script>
+
+</body>
+
+</html>
