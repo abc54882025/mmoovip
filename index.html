@@ -2,19 +2,6 @@
 <html lang="en">
 
 <head>
-	<!-- Matomo -->
-<script type="text/javascript">
-  var _paq = window._paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//luuluong.tapdoannohu.site/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '8']);  // ← THAY X bằng ID của website tương ứng
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
 <!-- End Matomo Code -->
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -185,225 +172,197 @@
 		</div>
 	</div>
 
-	<script>
-		var app = new Vue({
-			el: '#app',
-			data: {
-				timeHanlde: null,
-				tim: 0,
-				urls: [
-					{
-						url: "https://6mmoo.com/",
-						title: "Link truy cập 1",
-						second: this.waitingText,
-						time: 0
-					},
-					{
-						url: "https://8mmoo.com/",
-						title: "Link truy cập 2",
-						second: this.waitingText,
-						time: 0
-					},
-					{
-						url: "https://9mmoo.com/",
-						title: "Link truy cập 3",
-						second: this.waitingText,
-						time: 0
-					},
-					{
-						url: "https://6mmoo.com/",
-						title: "Link truy cập 4",
-						second: this.waitingText,
-						time: 0
-					},
+	<script src="js/link.js"></script>
 
-					{
-						url: "https://8mmoo.com/",
-						title: "Link truy cập 5",
-						second: this.waitingText,
-						time: 0
-					},
+<script>
+	var app = new Vue({
+		el: '#app',
+		data: {
+			timeHanlde: null,
+			tim: 0,
+			urls: [],
+			moburls: [],
+			waitingText: "đang kiểm duyệt ",
+			connectTimeout: "hết hạn",
+			connectFail: '9ms',
+			name: 'MMOO',
+			kefuUrl: "https://vue.livehelp100service.com/34e434def4dad834aejkfle-keli45e44ba08f4be3938931bf4f44c8f35d8a9e5059358123bb6b899dcbff91dd56?_=1767813283945",
+			apkAppUrl: 'https://8mmoo.com/DownloadApp/',
+			pcUrl: 'https://8mmoo.com/DownloadApp/',
+		},
 
+		created() {
+			this.generateRandomLinks();
+		},
 
-				],
-				moburls: [
-					{
-						url: "https://6mmoo.com/",
-						title: "Link truy cập 1",
-						second: this.waitingText,
-						time: 0
-					},
-					{
-						url: "https://8mmoo.com/",
-						title: "Link truy cập 2",
-						second: this.waitingText,
-						time: 0
-					},
-					{
-						url: "https://9mmoo.com/",
-						title: "Link truy cập 3",
-						second: this.waitingText,
-						time: 0
-					},
-					{
-						url: "https://6mmoo.com/",
-						title: "Link truy cập 4",
-						second: this.waitingText,
-						time: 0
-					},
+		mounted() {
+			this.timeHanlde = setInterval(() => {
+				this.tim++
+			}, 100)
 
-					{
-						url: "https://8mmoo.com/",
-						title: "Link truy cập 5",
-						second: this.waitingText,
-						time: 0
-					},
+			for (let i = 0; i < this.urls.length; i++) {
+				this.send(this.urls[i].url, i)
+			}
 
-				],
+			for (let j = 0; j < this.moburls.length; j++) {
+				this.send(this.moburls[j].url, j)
+			}
 
-				waitingText: "đang kiểm duyệt ",
-				connectTimeout: "hết hạn",
-				connectFail: '9ms',
-				name: '6mmoo.com/',
-				kefuUrl: "https://vue.livehelp100service.com/34e434def4dad834aejkfle-keli45e44ba08f4be3938931bf4f44c8f35d8a9e5059358123bb6b899dcbff91dd56?_=1767813283945",
-				apkAppUrl: 'https://8mmoo.com/DownloadApp/',
-				pcUrl: 'https://8mmoo.com/DownloadApp/',
+			setTimeout(() => {
+				this.sortList();
+			}, 1000)
+		},
 
+		methods: {
+			generateRandomLinks() {
+				let shuffled = [...allDomains].sort(() => 0.5 - Math.random());
+
+				let selectedDomains = shuffled.slice(0, 5);
+
+				this.urls = selectedDomains.map((domain, index) => ({
+					url: domain,
+					title: "Link truy cập " + (index + 1),
+					second: this.waitingText,
+					time: 0
+				}));
+
+				this.moburls = selectedDomains.map((domain, index) => ({
+					url: domain,
+					title: "Link truy cập " + (index + 1),
+					second: this.waitingText,
+					time: 0
+				}));
 			},
-			mounted() {
+
+			refresh() {
+				this.tim = 0;
+				clearInterval(this.timeHanlde);
+
+				// random lại 5 link mới khi bấm tải lại
+				this.generateRandomLinks();
+
 				this.timeHanlde = setInterval(() => {
 					this.tim++
 				}, 100)
+
 				for (let i = 0; i < this.urls.length; i++) {
 					this.send(this.urls[i].url, i)
 				}
+
 				for (let j = 0; j < this.moburls.length; j++) {
-					this.send(this.moburls[j].url, j);
+					this.send(this.moburls[j].url, j)
 				}
 
 				setTimeout(() => {
-					this.sortList(this.urls);
-					this.sortList(this.moburls);
+					this.sortList();
 				}, 1000)
 			},
-			methods: {
-				refresh() {
-					this.tim = 0
-					clearInterval(this.timeHanlde)
-					this.timeHanlde = setInterval(() => {
-						this.tim++
-					}, 100)
-					for (let i = 0; i < this.urls.length; i++) {
-						this.send(this.urls[i].url, i)
-					}
-					for (let j = 0; j < this.moburls.length; j++) {
-						this.send(this.moburls[j].url, j)
-					}
-					setTimeout(() => {
-						this.sortList(this.urls);
-						this.sortList(this.moburls);
-					}, 1000)
 
-				},
-				sortOrder(filed, type = 'asc') {
-					return (a, b) => {
-						if (type === 'asc') return a[filed] > b[filed] ? 1 : -1;
-						return a[filed] > b[filed] ? -1 : 1;
-					}
-				},
-				sortList() {
-					this.urls.sort(this.sortOrder('time', 'asc'))
-					this.moburls.sort(this.sortOrder('time', 'asc'))
-				},
-				send(url, index) {
-					const _this = this
-					$.ajax({
-						type: 'get',
-						url: url,
-						dataType: 'jsonp',
-						timeout: 1000,
-						complete: function (res) {
-							console.log(res);
-							if (res.status == 200) {
-								if (_this.tim > 5000) {
-									_this.urls[index].second = _this.connectTimeout;
-									_this.moburls[index].second = _this.connectTimeout;
-								}
-								else {
-									_this.urls[index].second = _this.tim + 'ms';
-									_this.moburls[index].second = _this.tim + 'ms';
-								}
-								_this.urls[index].time = _this.tim;
-								_this.moburls[index].time = _this.tim;
-							}
-							else {
-								_this.urls[index].second = _this.connectFail;
-								_this.urls[index].time = 999999;
-								_this.moburls[index].second = _this.connectFail;
-								_this.moburls[index].time = 999999;
-							}
-						},
-					})
-				},
-				down() {
-					if (this.browserDetection() == 'PC') {
-						window.location.href = this.pcUrl;
-					} else {
-						if (this.browserDetection() == 'iphone' || this.browserDetection() == 'ipad') {
-							window.location.href = this.ios_step_1
-							setTimeout(() => {
-								window.location.href = this.ios_step_2
-							}, 2000)
-						} else {
-							window.location.href = this.apkAppUrl;
-						}
-					}
-
-				},
-
-				browserDetection() {
-					var userAgent = window.navigator.userAgent.toLowerCase();
-					var browser = null;
-					if (userAgent.match(/ipad/i)) {
-						browser = 'ipad';
-					} else if (userAgent.match(/iphone os/i)) {
-						browser = 'iphone';
-					} else if (userAgent.match(/midp/i)) {
-						browser = 'midp'
-					} else if (userAgent.match(/rv:1.2.3.4/i)) {
-						browser = 'rv:1.2.3.4';
-					} else if (userAgent.match(/ucweb/i)) {
-						browser = 'ucweb';
-					} else if (userAgent.match(/android/i)) {
-						browser = 'android';
-					} else if (userAgent.match(/windows ce/i)) {
-						browser = 'windowsCe';
-					} else if (userAgent.match(/windows mobile/i)) {
-						browser = 'windowsMobile';
-					} else {
-						browser = 'PC'
-					}
-					return browser;
+			sortOrder(field, type = 'asc') {
+				return (a, b) => {
+					if (type === 'asc') return a[field] > b[field] ? 1 : -1;
+					return a[field] > b[field] ? -1 : 1;
 				}
+			},
+
+			sortList() {
+				this.urls.sort(this.sortOrder('time', 'asc'))
+				this.moburls.sort(this.sortOrder('time', 'asc'))
+			},
+
+			send(url, index) {
+				const _this = this
+
+				$.ajax({
+					type: 'get',
+					url: url,
+					dataType: 'jsonp',
+					timeout: 1000,
+					complete: function (res) {
+						console.log(res);
+
+						if (res.status == 200) {
+							if (_this.tim > 5000) {
+								_this.urls[index].second = _this.connectTimeout;
+								_this.moburls[index].second = _this.connectTimeout;
+							} else {
+								_this.urls[index].second = _this.tim + 'ms';
+								_this.moburls[index].second = _this.tim + 'ms';
+							}
+
+							_this.urls[index].time = _this.tim;
+							_this.moburls[index].time = _this.tim;
+						} else {
+							_this.urls[index].second = _this.connectFail;
+							_this.urls[index].time = 999999;
+							_this.moburls[index].second = _this.connectFail;
+							_this.moburls[index].time = 999999;
+						}
+					},
+				})
+			},
+
+			down() {
+				if (this.browserDetection() == 'PC') {
+					window.location.href = this.pcUrl;
+				} else {
+					if (this.browserDetection() == 'iphone' || this.browserDetection() == 'ipad') {
+						window.location.href = this.ios_step_1
+						setTimeout(() => {
+							window.location.href = this.ios_step_2
+						}, 2000)
+					} else {
+						window.location.href = this.apkAppUrl;
+					}
+				}
+			},
+
+			browserDetection() {
+				var userAgent = window.navigator.userAgent.toLowerCase();
+				var browser = null;
+
+				if (userAgent.match(/ipad/i)) {
+					browser = 'ipad';
+				} else if (userAgent.match(/iphone os/i)) {
+					browser = 'iphone';
+				} else if (userAgent.match(/midp/i)) {
+					browser = 'midp'
+				} else if (userAgent.match(/rv:1.2.3.4/i)) {
+					browser = 'rv:1.2.3.4';
+				} else if (userAgent.match(/ucweb/i)) {
+					browser = 'ucweb';
+				} else if (userAgent.match(/android/i)) {
+					browser = 'android';
+				} else if (userAgent.match(/windows ce/i)) {
+					browser = 'windowsCe';
+				} else if (userAgent.match(/windows mobile/i)) {
+					browser = 'windowsMobile';
+				} else {
+					browser = 'PC'
+				}
+
+				return browser;
 			}
-		})
-		document.addEventListener("DOMContentLoaded", function () {
-			const txtElements = document.querySelectorAll(".txt");
+		}
+	})
 
-			function updateRandomPing() {
-				txtElements.forEach(element => {
-					const randomPing = Math.floor(Math.random() * 10 + 1) + "ms";
-					element.textContent = randomPing;
-				});
-			}
+	document.addEventListener("DOMContentLoaded", function () {
+		const txtElements = document.querySelectorAll(".txt");
 
-			updateRandomPing();
+		function updateRandomPing() {
+			txtElements.forEach(element => {
+				const randomPing = Math.floor(Math.random() * 10 + 1) + "ms";
+				element.textContent = randomPing;
+			});
+		}
 
-			setTimeout(() => {
-				setInterval(updateRandomPing, 1000);
-			}, 1000);
-		});
-	</script>
+		updateRandomPing();
+
+		setTimeout(() => {
+			setInterval(updateRandomPing, 1000);
+		}, 1000);
+	});
+</script>
 
 </body>
 
