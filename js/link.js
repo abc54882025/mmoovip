@@ -1,5 +1,5 @@
 const allDomains = [
-    "https://00099000.com",
+    "https://00055000.vip",
     "https://00077000.app",
     "https://00077000.com",
     "https://00055000.com",
